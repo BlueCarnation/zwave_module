@@ -120,11 +120,7 @@ pub async fn run_instant_scan() -> Result<bool, Box<dyn std::error::Error>>  {
         zwave_durations: String::from("5"),
     };
 
-
-    let mut map = HashMap::new();
-    map.insert("1", data);
-    
-    let json = serde_json::to_string(&map).expect("Failed to serialize data");
+    let json = serde_json::to_string(&data).expect("Failed to serialize data");
     println!("{}", json);
     
     let mut file = File::create("zwave_instantdata.json").expect("Failed to create file");
